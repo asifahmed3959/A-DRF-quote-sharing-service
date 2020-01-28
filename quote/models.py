@@ -6,4 +6,4 @@ User = get_user_model()
 
 class Quote(models.Model):
     author = models.ForeignKey(User,related_name='author',on_delete=models.CASCADE)
-    quote = models.CharField(max_length=255,blank=False)
+    quote = models.CharField(max_length=128,blank=False)

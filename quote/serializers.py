@@ -23,4 +23,10 @@ class QuoteListSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Quote
-        fields = ['author','quote']
+        fields = ['author','quote','id']
+
+class QuoteUpdateSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Quote
+        fields = ['quote']

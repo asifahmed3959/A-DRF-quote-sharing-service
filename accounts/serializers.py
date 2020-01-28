@@ -5,6 +5,7 @@ from rest_framework_simplejwt.tokens import RefreshToken, TokenError
 from django.contrib.auth import get_user_model
 from django.contrib.auth.hashers import make_password
 from django.utils.text import gettext_lazy as _
+from django.contrib.auth.password_validation import validate_password
 
 
 User = get_user_model()
@@ -25,6 +26,7 @@ class UserSerializer(serializers.ModelSerializer):
         """
         return make_password(value)
 
+
 class RefreshTokenSerializer(serializers.Serializer):
     refresh = serializers.CharField()
 
@@ -41,3 +43,17 @@ class RefreshTokenSerializer(serializers.Serializer):
             RefreshToken(self.token).blacklist()
         except TokenError:
             self.fail('bad_token')
+
+
+
+
+class ChangePasswordSerializer(serializers.Serializer):
+    """
+    Serializer for password change endpoint.
+    """
+    old_password = serializers.CharField(required=True)
+    new_password = serializers.CharField(required=True)
+
+    def validate_new_password(self, value):
+        validate_password(value)
+        return value
