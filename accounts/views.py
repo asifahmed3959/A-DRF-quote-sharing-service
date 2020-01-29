@@ -7,26 +7,30 @@ from rest_framework.response import Response
 from rest_framework.decorators import APIView, permission_classes
 from rest_framework import permissions
 from rest_framework.decorators import api_view
+from rest_framework.views import APIView
 
 from .serializers import RefreshTokenSerializer
 from accounts.serializers import UserSerializer
 from accounts.serializers import ChangePasswordSerializer
 
+
 User = get_user_model()
 
-@api_view(['GET', 'POST'])
-@permission_classes([permissions.AllowAny,])
-def user_registration(request):
-    """
-    List all required docs, or create a new user.
-    """
-    if request.method == 'GET':
-        serializer = UserSerializer()
-        return Response(serializer.data)
 
-    elif request.method == 'POST':
-        serializer = UserSerializer(data=request.data)
-        if serializer.is_valid():
+class user_registration(APIView):
+    """
+    create a new user.
+    """
+    serializer_class = UserSerializer
+    permission_classes = (permissions.AllowAny,)
+
+    def get_serializer(self,data):
+
+        return self.serializer_class(data=data)
+
+    def post(self, request, *args):
+        serializer = self.get_serializer(data=request.data)
+        if serializer.is_valid(raise_exception=True):
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

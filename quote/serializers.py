@@ -12,11 +12,13 @@ class QuoteSaveSerializer(serializers.ModelSerializer):
         model = Quote
         fields = ['author','quote']
 
+
 class UserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
         fields = ['username','first_name','last_name','email','id']
+
 
 class QuoteListSerializer(serializers.ModelSerializer):
     author = UserSerializer(read_only=True)
@@ -24,6 +26,7 @@ class QuoteListSerializer(serializers.ModelSerializer):
     class Meta:
         model = Quote
         fields = ['author','quote','id']
+
 
 class QuoteUpdateSerializer(serializers.ModelSerializer):
 

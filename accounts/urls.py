@@ -11,8 +11,8 @@ from . import views
 app_name = 'accounts'
 
 urlpatterns = [
-    path('register/',views.user_registration,name='registration'),
-path('login/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('register/',views.user_registration.as_view(),name='registration'),
+    path('login/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     path('logout/', views.LogoutView.as_view(), name='token_blacklisted'),
     path('change-password/', views.UpdatePassword.as_view(), name='token_blacklisted'),
