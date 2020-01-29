@@ -63,10 +63,10 @@ ROOT_URLCONF = 'quotations.urls'
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES':(
-        'rest_framework.permissions.IsAuthenticated',
-        'rest_framework.permissions.IsAuthenticatedOrReadOnly',
+        #'rest_framework.permissions.IsAuthenticated',
+        #'rest_framework.permissions.IsAuthenticatedOrReadOnly',
         'rest_framework.permissions.AllowAny',
-        'quote.permissions.IsOwnerOrReadOnly',
+        #'quote.permissions.IsOwnerOrReadOnly',
     ),
      'DEFAULT_AUTHENTICATION_CLASSES':[
          'rest_framework_simplejwt.authentication.JWTAuthentication',

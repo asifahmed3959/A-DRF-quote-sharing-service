@@ -27,7 +27,7 @@ class UserSerializer(serializers.ModelSerializer):
         return make_password(value)
 
 
-class RefreshTokenSerializer(serializers.Serializer):
+class BlackListRefreshTokenSerializer(serializers.Serializer):
     refresh = serializers.CharField()
 
     default_error_messages = {
