@@ -23,3 +23,4 @@ If the access token has expired a new access token can regained using the refres
 - A user can see all the quotes posted on the application along with their authors.
 - A user can also query/filter quotes using id, username of the author or by text that may contain in the quote
 - An author can also update their quote or delete it.
+- A user can also change their password if they like to. 
