@@ -32,9 +32,9 @@ dotenv.load_dotenv(ENV_PATH, verbose=True)
 SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['3.129.11.239']
 
 AUTH_USER_MODEL = 'accounts.User'
 
@@ -52,7 +52,7 @@ INSTALLED_APPS = [
     'quote',
     'rest_framework',
     'rest_framework_simplejwt',
-'rest_framework_simplejwt.token_blacklist',
+    'rest_framework_simplejwt.token_blacklist',
 
 ]
 
